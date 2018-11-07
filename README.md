@@ -1,2 +1,2 @@
 # UnityCurling
-Repository of our project
+This is the project repository of our class 'Beleuchtung und Rendering'.

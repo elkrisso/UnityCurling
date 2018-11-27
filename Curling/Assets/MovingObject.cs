@@ -33,7 +33,7 @@ public class MovingObject : MonoBehaviour {
                 speed = 0;
             }
             else {
-                speed = speed + 1f;
+                speed = speed + 2f;
             }
         }
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
@@ -47,7 +47,7 @@ public class MovingObject : MonoBehaviour {
             // Add force so that the rigidbody "glides"
             if (isMoving)
             {
-                rb.AddRelativeForce(movement * 0.5f);
+                rb.AddRelativeForce(movement * 0.6f);
             }
         }
         if (Input.GetKeyUp("space"))

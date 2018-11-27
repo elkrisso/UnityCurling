@@ -54,7 +54,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CameraFollow.cs" />
+     <Compile Include="Assets\ICE_sushishop\scripts_probes\RealtimeReflection.cs" />
+     <Compile Include="Assets\ICE_sushishop\scripts_probes\RealtimeReflection1.cs" />
      <Compile Include="Assets\MovingObject.cs" />
+     <None Include="Assets\ICE_sushishop\Shader\Ice(break).shader" />
+     <None Include="Assets\ICE_sushishop\Shader\Glass.shader" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/krist/Documents/unity/Curling/UnityCurling/Curling/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>

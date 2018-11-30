@@ -16,7 +16,7 @@ public class MovingObject : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         isMoving = false;
         previousPosition = rb.position;
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionX;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionX;
     }
 
     void Update()
@@ -45,8 +45,9 @@ public class MovingObject : MonoBehaviour {
             // Add force so that the rigidbody "glides"
             if (isMoving)
             {
-                rb.AddRelativeForce(movement * 0.1f);
-               rb.transform.Rotate(new Vector3(0,5,0) * Time.deltaTime);
+               rb.AddRelativeForce(new Vector3(0f,-0.5f,0f));
+               //Debug.Log("log");
+               //rb.transform.Rotate(new Vector3(0,15,0) * Time.deltaTime);
             }
         }
         if (Input.GetKeyUp("space"))

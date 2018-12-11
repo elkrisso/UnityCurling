@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Glass
   m_Shader: {fileID: 4800000, guid: c16efd14f0adca84d960699ce98be4a5, type: 3}
-  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION _LOCALGLOBAL_ON _NODE_2671_ON _SWITCHDIREC_ON
+  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION _NODE_2671_ON _SWITCHDIREC_ON
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -23,8 +23,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: fbba011cc6fa1474294f6700f3e9ac41, type: 3}
-        m_Scale: {x: 2, y: 2}
+        m_Texture: {fileID: 2800000, guid: ed904cf92daa73944949abb5520bea58, type: 3}
+        m_Scale: {x: 2, y: 10}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
@@ -55,7 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapII:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: fbba011cc6fa1474294f6700f3e9ac41, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -71,7 +71,7 @@ Material:
         m_Scale: {x: 1.02, y: 1}
         m_Offset: {x: 0, y: 0}
     - _snow:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8cfeb5c813cba7049a32c932aa820d57, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -79,17 +79,17 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
-    - _Freezeeffectnormal: 8.2
+    - _Freezeeffectnormal: 0
     - _Freezing: 4.28
-    - _Gloss: 0.744
+    - _Gloss: 1
     - _Gloss2: 0.763
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Ice_fres: 2.54
-    - _Ice_fresnel: 2.36
-    - _LocalGlobal: 1
-    - _Metallic: 0.89
+    - _Ice_fresnel: 2.6
+    - _LocalGlobal: 0
+    - _Metallic: 0
     - _Mode: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -98,7 +98,7 @@ Material:
     - _SrcBlend: 5
     - _SwitchDirec: 1
     - _Transp: 0.128
-    - _Transparency: 0.39
+    - _Transparency: 0.75
     - _UVSec: 0
     - _ZWrite: 0
     - _freeze: 0.46
@@ -109,9 +109,9 @@ Material:
     - _node_5912: 0.6
     - _node_8801: 1.91
     - _node_9046: 1.12
-    - _snow_slider: 1.8
+    - _snow_slider: 0
     m_Colors:
-    - _Color: {r: 0.27424878, g: 0.10679956, b: 0.9056604, a: 0.253}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.253}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _node_5379: {r: 1, g: 0.6397059, b: 0.6397059, a: 1}
     - _node_6644: {r: 0.5147059, g: 0.7389455, b: 1, a: 1}

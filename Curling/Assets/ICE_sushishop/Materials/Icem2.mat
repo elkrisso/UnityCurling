@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Icem2
   m_Shader: {fileID: 4800000, guid: d288a1f2a304efd419e96c78f844b6ef, type: 3}
-  m_ShaderKeywords: _NODE_2671_ON _SWITCHDIREC_ON
+  m_ShaderKeywords: _LOCALGLOBAL_ON _NODE_2671_ON _SWITCHDIREC_ON
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -71,7 +71,7 @@ Material:
         m_Scale: {x: 1.02, y: 1}
         m_Offset: {x: 0, y: 0}
     - _snow:
-        m_Texture: {fileID: 2800000, guid: 50c397b0cfd8e7f4cb233370c8999495, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8cfeb5c813cba7049a32c932aa820d57, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -86,7 +86,7 @@ Material:
     - _Glossiness: 0.5
     - _Ice_fres: 2.54
     - _Ice_fresnel: 3
-    - _LocalGlobal: 0
+    - _LocalGlobal: 1
     - _Metallic: 0.403
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -94,7 +94,7 @@ Material:
     - _SrcBlend: 1
     - _SwitchDirec: 1
     - _Transp: 0.128
-    - _Transparency: 0.88
+    - _Transparency: 0.83
     - _UVSec: 0
     - _ZWrite: 1
     - _freeze: 0.46
@@ -107,7 +107,7 @@ Material:
     - _node_9046: 1.12
     - _snow_slider: 0
     m_Colors:
-    - _Color: {r: 0.9411765, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _node_5379: {r: 1, g: 0.6397059, b: 0.6397059, a: 1}
     - _node_6644: {r: 0.5147059, g: 0.7389455, b: 1, a: 1}

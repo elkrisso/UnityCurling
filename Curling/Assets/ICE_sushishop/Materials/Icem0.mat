@@ -81,20 +81,20 @@ Material:
     - _DstBlend: 0
     - _Freezeeffectnormal: 8.56
     - _Freezing: 4.28
-    - _Gloss: 0.335
+    - _Gloss: 0.797
     - _Gloss2: 0.763
     - _Glossiness: 0.5
     - _Ice_fres: 2.54
-    - _Ice_fresnel: 2.8
+    - _Ice_fresnel: 0
     - _LocalGlobal: 0
-    - _Metallic: 0.415
+    - _Metallic: 0.165
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SrcBlend: 1
     - _SwitchDirec: 1
     - _Transp: 0.128
-    - _Transparency: 0.185
+    - _Transparency: 0.79
     - _UVSec: 0
     - _ZWrite: 1
     - _freeze: 0.46

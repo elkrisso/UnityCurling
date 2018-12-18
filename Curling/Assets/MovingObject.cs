@@ -10,6 +10,9 @@ public class MovingObject : MonoBehaviour {
     private bool pressed;
     private bool isMoving;
     private Vector3 previousPosition;
+    private bool speedDown;
+    private Vector3 startPosition;
+    public bool finishedShot;
 
     void Start()
     {
@@ -17,6 +20,9 @@ public class MovingObject : MonoBehaviour {
         isMoving = false;
         previousPosition = rb.position;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionX;
+        speedDown = false;
+        startPosition = rb.transform.position;
+        finishedShot = false;
     }
 
     void Update()
@@ -25,13 +31,24 @@ public class MovingObject : MonoBehaviour {
 
         if (Input.GetKey("space"))
         {
-            if (speed >= 100)
+            if (!pressed)
             {
-                //wait for key being released
-                speed = 0;
-            }
-            else {
-                speed = speed + 2f;
+                if (speed >= 100)
+                {
+                    speedDown = true;
+                }
+                if (speed <= 0)
+                {
+                    speedDown = false;
+                }
+                if (speedDown)
+                {
+                    speed = speed - 1.5f;
+                }
+                else
+                {
+                    speed = speed + 1.5f;
+                }
             }
         }
         Vector3 movement = new Vector3(0.0f, 0.0f, moveVertical);
@@ -52,11 +69,29 @@ public class MovingObject : MonoBehaviour {
         }
         if (Input.GetKeyUp("space"))
         {
-            rb.AddForce(movement * speed);
-            speed = 0f;
-            isMoving = true;
+            if (!pressed) {
+                rb.AddForce(movement * speed);
+                speed = 0f;
+                isMoving = true;
+                pressed = true;
+            }
+        }
+        if (isMoving == false && pressed) {
+            resetPosition();
         }
         previousPosition = rb.position;
 
+    }
+
+    public void resetPosition() {
+        StartCoroutine(wait());
+    }
+    IEnumerator wait(){
+        finishedShot = true;
+        yield return new WaitForSeconds(5);
+        this.transform.position = startPosition;
+        isMoving = false;
+        pressed = false;
+        finishedShot = false;
     }
 }

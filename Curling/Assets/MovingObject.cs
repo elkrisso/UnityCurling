@@ -52,7 +52,8 @@ public class MovingObject : MonoBehaviour {
             }
         }
         Vector3 movement = new Vector3(0.0f, 0.0f, moveVertical);
-        if (rb.position.z < previousPosition.z+0.005 && isMoving)
+        //if (rb.position.z == previousPosition.z && isMoving)
+        if (rb.velocity.sqrMagnitude < .01 && rb.angularVelocity.sqrMagnitude < .01 && pressed && isMoving)
         {
             Debug.Log("object stopped moving");
             isMoving = false;
@@ -80,6 +81,7 @@ public class MovingObject : MonoBehaviour {
             resetPosition();
         }
         previousPosition = rb.position;
+        Debug.Log(rb.position);
 
     }
 

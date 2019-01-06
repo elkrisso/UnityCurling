@@ -13,6 +13,7 @@ public class MovingObject : MonoBehaviour {
     private bool speedDown;
     private Vector3 startPosition;
     public bool finishedShot;
+    private bool locked;
 
     void Start()
     {
@@ -23,15 +24,19 @@ public class MovingObject : MonoBehaviour {
         speedDown = false;
         startPosition = rb.transform.position;
         finishedShot = false;
+        locked = false;
     }
 
     void Update()
     {
+        if (locked) {
+            return;
+        }
         float moveVertical = 2.0f;
 
         if (Input.GetKey("space"))
         {
-            if (!pressed)
+            if (!pressed && !isMoving)
             {
                 if (speed >= 100)
                 {
@@ -81,19 +86,20 @@ public class MovingObject : MonoBehaviour {
             resetPosition();
         }
         previousPosition = rb.position;
-        Debug.Log(rb.position);
-
     }
 
     public void resetPosition() {
+        locked = true;
         StartCoroutine(wait());
     }
     IEnumerator wait(){
         finishedShot = true;
         yield return new WaitForSeconds(5);
         this.transform.position = startPosition;
-        isMoving = false;
         pressed = false;
+        isMoving = false;
         finishedShot = false;
+        locked = false;
+
     }
 }

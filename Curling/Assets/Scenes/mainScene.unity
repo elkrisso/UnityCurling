@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44985288, g: 0.49991918, b: 0.57558537, a: 1}
+  m_IndirectSpecularColor: {r: 0.44985253, g: 0.49991852, b: 0.5755845, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -499,6 +499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   finishedShot: 0
+  isAtStartPosition: 0
 --- !u!65 &985819488
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -807,6 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c19912c5b96744197630552a1a656a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movingObject: {fileID: 985819487}
   target: {fileID: 985819492}
   smoothSpeed: 0.125
   offset: {x: 2, y: 1.8, z: -1.95}

@@ -14,6 +14,7 @@ public class MovingObject : MonoBehaviour
     private bool speedDown;
     private Vector3 startPosition;
     public bool finishedShot;
+    public bool isAtStartPosition;
     private bool locked;
 
     void Start()
@@ -25,6 +26,7 @@ public class MovingObject : MonoBehaviour
         speedDown = false;
         startPosition = rb.transform.position;
         finishedShot = false;
+        isAtStartPosition = true;
         locked = false;
         StartCoroutine(increaseSpeed());
         StartCoroutine(controlLeftandRight());
@@ -53,6 +55,7 @@ public class MovingObject : MonoBehaviour
                 speed = 0f;
                 isMoving = true;
                 pressed = true;
+                isAtStartPosition = false;
             }
         }
         if (isMoving == false && pressed)
@@ -81,8 +84,8 @@ public class MovingObject : MonoBehaviour
         pressed = false;
         isMoving = false;
         finishedShot = false;
+        isAtStartPosition = true;
         locked = false;
-
     }
 
     private IEnumerator increaseSpeed()

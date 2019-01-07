@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingObject : MonoBehaviour {
+public class MovingObject : MonoBehaviour
+{
 
     public float speed;
 
@@ -20,79 +21,60 @@ public class MovingObject : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         isMoving = false;
         previousPosition = rb.position;
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionX;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         speedDown = false;
         startPosition = rb.transform.position;
         finishedShot = false;
         locked = false;
+        StartCoroutine(increaseSpeed());
+        StartCoroutine(controlLeftandRight());
     }
 
     void Update()
     {
-        if (locked) {
+        if (locked)
+        {
             return;
         }
-        float moveVertical = 2.0f;
+        float moveVertical = 2.5f;
 
-        if (Input.GetKey("space"))
-        {
-            if (!pressed && !isMoving)
-            {
-                if (speed >= 100)
-                {
-                    speedDown = true;
-                }
-                if (speed <= 0)
-                {
-                    speedDown = false;
-                }
-                if (speedDown)
-                {
-                    speed = speed - 1.5f;
-                }
-                else
-                {
-                    speed = speed + 1.5f;
-                }
-            }
-        }
         Vector3 movement = new Vector3(0.0f, 0.0f, moveVertical);
-        //if (rb.position.z == previousPosition.z && isMoving)
-        if (rb.velocity.sqrMagnitude < .01 && rb.angularVelocity.sqrMagnitude < .01 && pressed && isMoving)
+        if (rb.velocity.magnitude < .001f && rb.angularVelocity.magnitude < .001 && pressed && isMoving)
         {
             Debug.Log("object stopped moving");
             isMoving = false;
         }
-        else
-        {
-            // Add force so that the rigidbody "glides"
-            if (isMoving)
-            {
-               rb.AddRelativeForce(new Vector3(0f,-0.5f,0f));
-               //Debug.Log("log");
-               //rb.transform.Rotate(new Vector3(0,15,0) * Time.deltaTime);
-            }
-        }
+        // Add force so that the rigidbody "glides"
         if (Input.GetKeyUp("space"))
         {
-            if (!pressed) {
+            if (!pressed)
+            {
                 rb.AddForce(movement * speed);
                 speed = 0f;
                 isMoving = true;
                 pressed = true;
             }
         }
-        if (isMoving == false && pressed) {
+        if (isMoving == false && pressed)
+        {
             resetPosition();
+        }
+        if (isMoving)
+        {
+            rb.AddRelativeForce(new Vector3(0f, -0.5f, 0f));
+            //Debug.Log("log");
+            //rb.transform.Rotate(new Vector3(0,15,0) * Time.deltaTime);
         }
         previousPosition = rb.position;
     }
 
-    public void resetPosition() {
+    public void resetPosition()
+    {
         locked = true;
         StartCoroutine(wait());
     }
-    IEnumerator wait(){
+    IEnumerator wait()
+    {
         finishedShot = true;
         yield return new WaitForSeconds(5);
         this.transform.position = startPosition;
@@ -101,5 +83,51 @@ public class MovingObject : MonoBehaviour {
         finishedShot = false;
         locked = false;
 
+    }
+
+    private IEnumerator increaseSpeed()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.04f); // wait half a second
+            if (Input.GetKey("space"))
+            {
+                if (!pressed && !isMoving)
+                {
+                    if (speed >= 100)
+                    {
+                        speedDown = true;
+                    }
+                    if (speed <= 0)
+                    {
+                        speedDown = false;
+                    }
+                    if (speedDown)
+                    {
+                        speed = speed - 1.5f;
+                    }
+                    else
+                    {
+                        speed = speed + 1.5f;
+                    }
+                }
+            }
+        }
+    }
+
+    private IEnumerator controlLeftandRight()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.04f); // wait half a second
+            if (Input.GetKey("left"))
+            {
+                rb.AddForce(new Vector3(-2.5f,0,0));
+            }
+            if (Input.GetKey("right"))
+            {
+                rb.AddForce(new Vector3(2.5f, 0, 0));
+            }
+        }
     }
 }

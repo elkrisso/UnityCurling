@@ -101,7 +101,7 @@ NavMeshSettings:
     agentRadius: 0.05
     agentHeight: 2
     agentSlope: 0
-    agentClimb: 0.4
+    agentClimb: 2
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -124,11 +124,12 @@ GameObject:
   - component: {fileID: 417271615}
   - component: {fileID: 417271614}
   - component: {fileID: 417271613}
+  - component: {fileID: 417271617}
   m_Layer: 0
   m_Name: bande2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!65 &417271613
@@ -192,12 +193,27 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 417271612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8, y: 0.27, z: 0}
+  m_LocalPosition: {x: 1.73, y: 0.2, z: 0}
   m_LocalScale: {x: 0.19, y: 0.43943, z: 50.6968}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &417271617
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 417271612}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &471142713
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,10 +460,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 985819492}
-  - component: {fileID: 985819488}
   - component: {fileID: 985819487}
   - component: {fileID: 985819486}
   - component: {fileID: 985819491}
+  - component: {fileID: 985819488}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -483,8 +499,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   finishedShot: 0
---- !u!136 &985819488
-CapsuleCollider:
+--- !u!65 &985819488
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -492,10 +508,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09531231
-  m_Height: 0.19062462
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.09837799, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.14, z: 0.32}
+  m_Center: {x: 0, y: 0.085, z: 0}
 --- !u!222 &985819491
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -818,6 +833,7 @@ GameObject:
   - component: {fileID: 1229667250}
   - component: {fileID: 1229667249}
   - component: {fileID: 1229667248}
+  - component: {fileID: 1229667252}
   m_Layer: 0
   m_Name: bande
   m_TagString: Untagged
@@ -892,6 +908,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &1229667252
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1229667247}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1307574974
 GameObject:
   m_ObjectHideFlags: 0

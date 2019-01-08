@@ -18,6 +18,7 @@ public class CameraFollow : MonoBehaviour {
         {
             transform.position = new Vector3(0, 1.6f, -28);
             transform.rotation = Quaternion.Euler(6, 0, 0);
+            started = true;
         } else { 
             if (started)
             {

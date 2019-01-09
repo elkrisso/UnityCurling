@@ -7,7 +7,7 @@ public class MovingObject : MonoBehaviour
 
     public float speed;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
     private bool pressed;
     private bool isMoving;
     private Vector3 previousPosition;

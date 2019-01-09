@@ -7,6 +7,8 @@ public class TextAnimation : MonoBehaviour {
     public MovingObject movingObject;
     private bool animate;
     public  Text text;
+    public GameObject centerObject;
+
     // Use this for initialization
     void Start () {
         text = GetComponent<Text>();

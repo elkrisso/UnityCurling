@@ -31,6 +31,7 @@ public class MovingObject : MonoBehaviour
         locked = false;
         StartCoroutine(increaseSpeed());
         StartCoroutine(controlLeftandRight());
+        StartCoroutine(addRelativeForce());
     }
 
     void Update()
@@ -62,12 +63,6 @@ public class MovingObject : MonoBehaviour
         if (isMoving == false && pressed)
         {
             resetPosition();
-        }
-        if (isMoving)
-        {
-            rb.AddRelativeForce(new Vector3(0f, -0.5f, 0f));
-            //Debug.Log("log");
-            //rb.transform.Rotate(new Vector3(0,15,0) * Time.deltaTime);
         }
         previousPosition = rb.position;
     }
@@ -132,6 +127,20 @@ public class MovingObject : MonoBehaviour
             if (Input.GetKey("right"))
             {
                 rb.AddForce(new Vector3(2.5f, 0, 0));
+            }
+        }
+    }
+
+    private IEnumerator addRelativeForce()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.04f); // wait half a second
+            if (isMoving)
+            {
+                rb.AddRelativeForce(new Vector3(0f, 0.5f, 0f));
+                //Debug.Log("log");
+                //rb.transform.Rotate(new Vector3(0,15,0) * Time.deltaTime);
             }
         }
     }

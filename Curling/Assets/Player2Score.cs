@@ -24,7 +24,7 @@ public class Player2Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (updatedScore || movingObject.currentPlayer == 1)
+        if (updatedScore || movingObject.currentPlayer == 0)
         {
             return;
         }

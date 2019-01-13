@@ -6,7 +6,6 @@ public class MovingObject : MonoBehaviour
 {
 
     public float speed;
-
     public Rigidbody rb;
     private bool pressed;
     private bool isMoving;
@@ -18,6 +17,7 @@ public class MovingObject : MonoBehaviour
     public bool isAtStartPosition;
     private bool locked;
     public int currentPlayer;
+    private Texture[] textures;
 
     void Start()
     {
@@ -32,7 +32,11 @@ public class MovingObject : MonoBehaviour
         locked = false;
         StartCoroutine(increaseSpeed());
         StartCoroutine(controlLeftandRight());
-        currentPlayer = 1;
+        currentPlayer = 0;
+
+        // Load textures from Assets\Ressources.
+        textures = new Texture[] { (Texture2D)Resources.Load("Curling_Stone_Texture1"), (Texture2D)Resources.Load("Curling_Stone_Texture2") };
+        this.GetComponentInChildren<Renderer>().material.mainTexture = textures[currentPlayer];
     }
 
     void Update()
@@ -91,8 +95,9 @@ public class MovingObject : MonoBehaviour
         isAtStartPosition = true;
         locked = false;
 
-        // Set current player for curling stone.
-        currentPlayer = currentPlayer == 1 ? 2 : 1;
+        // Set current player for curling stone and change texture.
+        currentPlayer = currentPlayer == 0 ? 1 : 0;
+        this.GetComponentInChildren<Renderer>().material.mainTexture = textures[currentPlayer];
     }
 
     private IEnumerator increaseSpeed()

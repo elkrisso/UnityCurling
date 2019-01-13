@@ -7,12 +7,13 @@ public class MovingObject : MonoBehaviour
 
     public float speed;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
     private bool pressed;
     private bool isMoving;
     private Vector3 previousPosition;
     private bool speedDown;
     private Vector3 startPosition;
+    public Vector3 endPosition;
     public bool finishedShot;
     public bool isAtStartPosition;
     private bool locked;
@@ -79,6 +80,7 @@ public class MovingObject : MonoBehaviour
     IEnumerator wait()
     {
         finishedShot = true;
+        endPosition = this.transform.position;
         yield return new WaitForSeconds(5);
         this.transform.position = startPosition;
         pressed = false;

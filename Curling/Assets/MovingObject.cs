@@ -17,6 +17,7 @@ public class MovingObject : MonoBehaviour
     public bool finishedShot;
     public bool isAtStartPosition;
     private bool locked;
+    public int currentPlayer;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class MovingObject : MonoBehaviour
         locked = false;
         StartCoroutine(increaseSpeed());
         StartCoroutine(controlLeftandRight());
+        currentPlayer = 1;
     }
 
     void Update()
@@ -88,6 +90,9 @@ public class MovingObject : MonoBehaviour
         finishedShot = false;
         isAtStartPosition = true;
         locked = false;
+
+        // Set current player for curling stone.
+        currentPlayer = currentPlayer == 1 ? 2 : 1;
     }
 
     private IEnumerator increaseSpeed()

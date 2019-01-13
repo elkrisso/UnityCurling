@@ -18,7 +18,7 @@ public class Player2Score : MonoBehaviour
         text = GetComponent<Text>();
         score = 0;
         updatedScore = false;
-        text.text = "Player 1: " + score;
+        text.text = "Player 2: " + score;
     }
 
     // Update is called once per frame
@@ -50,7 +50,7 @@ public class Player2Score : MonoBehaviour
         {
             score += 1;
         }
-        text.text = "Player 1: " + score;
+        text.text = "Player 2: " + score;
 
         updatedScore = true;
         yield return new WaitForSeconds(5);

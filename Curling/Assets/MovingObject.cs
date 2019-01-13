@@ -30,10 +30,11 @@ public class MovingObject : MonoBehaviour
         finishedShot = false;
         isAtStartPosition = true;
         locked = false;
+        currentPlayer = 0;
         StartCoroutine(increaseSpeed());
         StartCoroutine(controlLeftandRight());
-        currentPlayer = 0;
-
+        StartCoroutine(addRelativeForce());
+        
         // Load textures from Assets\Ressources.
         textures = new Texture[] { (Texture2D)Resources.Load("Curling_Stone_Texture1"), (Texture2D)Resources.Load("Curling_Stone_Texture2") };
         this.GetComponentInChildren<Renderer>().material.mainTexture = textures[currentPlayer];
@@ -68,12 +69,6 @@ public class MovingObject : MonoBehaviour
         if (isMoving == false && pressed)
         {
             resetPosition();
-        }
-        if (isMoving)
-        {
-            rb.AddRelativeForce(new Vector3(0f, -0.5f, 0f));
-            //Debug.Log("log");
-            //rb.transform.Rotate(new Vector3(0,15,0) * Time.deltaTime);
         }
         previousPosition = rb.position;
     }
@@ -142,6 +137,20 @@ public class MovingObject : MonoBehaviour
             if (Input.GetKey("right"))
             {
                 rb.AddForce(new Vector3(2.5f, 0, 0));
+            }
+        }
+    }
+
+    private IEnumerator addRelativeForce()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.04f); // wait half a second
+            if (isMoving)
+            {
+                rb.AddRelativeForce(new Vector3(0f, 0.5f, 0f));
+                //Debug.Log("log");
+                //rb.transform.Rotate(new Vector3(0,15,0) * Time.deltaTime);
             }
         }
     }

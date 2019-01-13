@@ -70,11 +70,11 @@ Material:
     - _Freezeeffectnormal: 6.07
     - _Gloss: 0.35
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0.481
     - _GlossyReflections: 1
     - _Ice_fresnel: 0.4528386
     - _LocalGlobal: 0
-    - _Metallic: 0.037
+    - _Metallic: 0.151
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02

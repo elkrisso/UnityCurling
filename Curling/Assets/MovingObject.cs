@@ -9,7 +9,6 @@ public class MovingObject : MonoBehaviour
     public Rigidbody rb;
     private bool pressed;
     private bool isMoving;
-    private Vector3 previousPosition;
     private bool speedDown;
     private Vector3 startPosition;
     public Vector3 endPosition;
@@ -18,12 +17,14 @@ public class MovingObject : MonoBehaviour
     private bool locked;
     public int currentPlayer;
     private Texture[] textures;
+    float moveVertical = 2.5f;
+    Vector3 movement;
+    bool detect;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         isMoving = false;
-        previousPosition = rb.position;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         speedDown = false;
         startPosition = rb.transform.position;
@@ -31,6 +32,8 @@ public class MovingObject : MonoBehaviour
         isAtStartPosition = true;
         locked = false;
         currentPlayer = 0;
+        movement = new Vector3(0.0f, 0.0f, moveVertical);
+        detect = false;
         StartCoroutine(increaseSpeed());
         StartCoroutine(controlLeftandRight());
         StartCoroutine(addRelativeForce());
@@ -40,23 +43,24 @@ public class MovingObject : MonoBehaviour
         this.GetComponentInChildren<Renderer>().material.mainTexture = textures[currentPlayer];
     }
 
-    void Update()
-    {
+    void Update() {
         if (locked)
         {
             return;
         }
-        float moveVertical = 2.5f;
 
-        Vector3 movement = new Vector3(0.0f, 0.0f, moveVertical);
-        if (rb.velocity.magnitude < .001f && rb.angularVelocity.magnitude < .001 && pressed && isMoving)
+        // if (rb.velocity.magnitude  < .0001f && rb.angularVelocity.magnitude < .0001 && pressed && isMoving)
+        if (rb.velocity.magnitude < 0.001 && rb.angularVelocity.magnitude < 0.001f && detect)
         {
-            Debug.Log("object stopped moving");
+            Debug.Log("------------------------------ object stopped moving");
             isMoving = false;
+            resetPosition();
         }
+
         // Add force so that the rigidbody "glides"
         if (Input.GetKeyUp("space"))
         {
+            Debug.Log("------------------------------------- object moving");
             if (!pressed)
             {
                 rb.AddForce(movement * speed);
@@ -64,18 +68,16 @@ public class MovingObject : MonoBehaviour
                 isMoving = true;
                 pressed = true;
                 isAtStartPosition = false;
+                StartCoroutine(detectIfObjectStopped());
             }
         }
-        if (isMoving == false && pressed)
-        {
-            resetPosition();
-        }
-        previousPosition = rb.position;
+
     }
 
     public void resetPosition()
     {
         locked = true;
+        detect = false;
         StartCoroutine(wait());
     }
     IEnumerator wait()
@@ -153,5 +155,10 @@ public class MovingObject : MonoBehaviour
                 //rb.transform.Rotate(new Vector3(0,15,0) * Time.deltaTime);
             }
         }
+    }
+
+    private IEnumerator detectIfObjectStopped() {
+        yield return new WaitForSeconds(0.2f); // wait half a second
+        detect = true;
     }
 }

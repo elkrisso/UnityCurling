@@ -31,7 +31,8 @@ Shader "Olanigan/Glass" {
                 "LightMode"="ForwardBase"
             }
             Blend SrcAlpha OneMinusSrcAlpha
-            ZWrite Off
+            // ZWrite Off
+			ZWrite On
             
             CGPROGRAM
             #pragma vertex vert
@@ -227,7 +228,8 @@ Shader "Olanigan/Glass" {
                 "LightMode"="ForwardAdd"
             }
             Blend One One
-            ZWrite Off
+            // ZWrite Off
+			ZWrite On
             
             CGPROGRAM
             #pragma vertex vert

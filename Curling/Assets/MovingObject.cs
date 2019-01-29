@@ -17,7 +17,12 @@ public class MovingObject : MonoBehaviour
     private bool locked;
     public int currentPlayer;
     private Texture[] textures;
+    public Spotlight1 spotlight1;
+    public Spotlight2 spotlight2;
+    private Color[] playerLightColors;
     float moveVertical = 2.5f;
+    public CenterCube centerCube;
+    public float startdistCenterCube, distCenterCube, distCenterCupeQuotient;
     Vector3 movement;
     bool detect;
 
@@ -40,7 +45,25 @@ public class MovingObject : MonoBehaviour
         
         // Load textures from Assets\Ressources.
         textures = new Texture[] { (Texture2D)Resources.Load("Curling_Stone_Texture1"), (Texture2D)Resources.Load("Curling_Stone_Texture2") };
+        playerLightColors = new Color[] { new Color(0f, 0f, 255f), new Color(255f, 0f, 0f) };
         this.GetComponentInChildren<Renderer>().material.mainTexture = textures[currentPlayer];
+
+        centerCube = FindObjectOfType<CenterCube>();
+        startdistCenterCube = Mathf.Abs(Vector3.Distance(this.transform.position, centerCube.transform.position));
+        distCenterCube = startdistCenterCube;
+        distCenterCupeQuotient = distCenterCube / startdistCenterCube;
+
+        // Set the Light for the current Player
+        spotlight1 = FindObjectOfType<Spotlight1>();
+        spotlight2 = FindObjectOfType<Spotlight2>();
+        spotlight1.SetColor(playerLightColors[currentPlayer]);
+        spotlight2.SetColor(playerLightColors[currentPlayer]);
+    }
+
+    void FixedUpdate()
+    {
+        distCenterCube = Mathf.Abs(Vector3.Distance(this.transform.position, centerCube.transform.position));
+        distCenterCupeQuotient = distCenterCube / startdistCenterCube;
     }
 
     void Update() {
@@ -91,10 +114,15 @@ public class MovingObject : MonoBehaviour
         finishedShot = false;
         isAtStartPosition = true;
         locked = false;
+        Debug.Log("startposition : s " + startPosition);
 
         // Set current player for curling stone and change texture.
         currentPlayer = currentPlayer == 0 ? 1 : 0;
         this.GetComponentInChildren<Renderer>().material.mainTexture = textures[currentPlayer];
+
+        // Set the Light for the current player
+        spotlight1.SetColor(playerLightColors[currentPlayer]);
+        spotlight2.SetColor(playerLightColors[currentPlayer]);
     }
 
     private IEnumerator increaseSpeed()

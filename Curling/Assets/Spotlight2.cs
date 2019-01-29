@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spotlight1 : MonoBehaviour {
+public class Spotlight2 : MonoBehaviour {
 
     public Transform target;
     public float smoothSpeed = 0.005f;
@@ -14,7 +14,7 @@ public class Spotlight1 : MonoBehaviour {
     {
         movingObject = FindObjectOfType<MovingObject>();
         startAngle = this.transform.eulerAngles.x;
-        transform.position = new Vector3(-2.29f,3.15f,-23.84f);
+        transform.position = new Vector3(2.29f, 15.15f, -23.84f);
     }
 
     void FixedUpdate()
@@ -30,3 +30,4 @@ public class Spotlight1 : MonoBehaviour {
         transform.GetComponent<Light>().color = color;
     }
 }
+

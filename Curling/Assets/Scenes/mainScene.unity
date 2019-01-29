@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4498697, g: 0.49993497, b: 0.5755942, a: 1}
+  m_IndirectSpecularColor: {r: 0.44985288, g: 0.49991918, b: 0.57558537, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 985819492}
   smoothSpeed: 0.005
-  offset: {x: -2.19, y: 3.05, z: -0.3}
+  offset: {x: -0.47, y: 3.47, z: 0}
   movingObject: {fileID: 0}
 --- !u!108 &70144076
 Light:
@@ -155,9 +155,9 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.08
+  m_Intensity: 0.005
   m_Range: 10
-  m_SpotAngle: 30
+  m_SpotAngle: 15
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -174,7 +174,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -189,7 +189,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 70144074}
   m_LocalRotation: {x: 0.6830127, y: 0.1830127, z: 0.1830127, w: 0.6830127}
-  m_LocalPosition: {x: -2.29, y: 3.15, z: -23.854}
+  m_LocalPosition: {x: -0.57, y: 3.57, z: -23.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 985819492}
   smoothSpeed: 0.005
-  offset: {x: 2.39, y: 3.05, z: -0.03}
+  offset: {x: 0.45, y: 3.47, z: 0}
   movingObject: {fileID: 0}
 --- !u!108 &221054269
 Light:
@@ -237,9 +237,9 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.08
+  m_Intensity: 0.005
   m_Range: 10
-  m_SpotAngle: 30
+  m_SpotAngle: 15
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -256,7 +256,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -271,7 +271,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 221054267}
   m_LocalRotation: {x: -0.1830127, y: -0.6830127, z: 0.6830127, w: 0.1830127}
-  m_LocalPosition: {x: 2.29, y: 3.15, z: -23.87}
+  m_LocalPosition: {x: 0.35, y: 3.57, z: -23.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
